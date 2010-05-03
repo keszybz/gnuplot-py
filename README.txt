@@ -58,8 +58,10 @@ Quick instructions:
 
 2. Extract the archive to a temporary directory.
 
-3. Install by changing to the directory and typing "python setup.py
-   install".
+3. Install by changing to the directory and typing 
+     python setup.py install
+   This installs via setuptools if available otherwise distutils.
+   The install via setuptools installs an egg package. 
 
 More information:
 
@@ -68,17 +70,23 @@ any use to you.  Gnuplot can be obtained via
 <http://www.gnuplot.info>.  You also need a copy of the numpy package, which
 is available from the Scipy group at <http://www.scipy.org/Download>.
 
-Gnuplot.py uses Python distutils
+Gnuplot.py uses Python setuptools if available, otherwise distutils
 <http://www.python.org/doc/current/inst/inst.html> and can be
 installed by untarring the package, changing into the top-level
-directory, and typing "python setup.py install".  The Gnuplot.py
-package is pure Python--no compilation is necessary.
+directory, and typing "python setup.py install" with sufficient privileges.
+The Gnuplot.py package is pure Python--no compilation is necessary.
 
-Gnuplot.py is structured as a python package.  That means that it
-installs itself as a subdirectory called `Gnuplot' under a directory
-of your python path (usually site-packages).  If you don't want to use
-distutils you can just move the main Gnuplot.py directory there and
-rename it to "Gnuplot".
+Gnuplot.py is structured as a python package.  Via setuptools this installs
+as an egg package (use unzip -t egg_name.egg to check content). 
+If you want to install in a subdirectory as distutils does, you can use 
+eg the install command (change path as needed)
+"sudo python setup.py install --single-version-externally-managed --root / "
+or add the option zip_safe=False to setup in setup.py.
+On Debian based systems add to above command the option "--install-layout=deb"
+After install, a package `Gnuplot' is present (as egg or as subdirectory 
+under a directory of your python path (usually dist-packages).  
+If you don't want to use setup.py you can just move the main Gnuplot.py 
+directory there and rename it to "Gnuplot".
 
 There are some configuration options that can be set near the top of
 the platform-dependent files gp-unix.py (Unix), gp_mac.py (Macintosh),
