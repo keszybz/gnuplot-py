@@ -18,28 +18,17 @@ import numpy
 def float_array(m):
     """Return the argument as a numpy array of type at least 'Float32'.
 
-    Leave 'Float64' unchanged, but upcast all other types to
-    'Float32'.  Allow also for the possibility that the argument is a
-    python native type that can be converted to a numpy array using
-    'numpy.asarray()', but in that case don't worry about
-    downcasting to single-precision float.
-
+    Convert input data to numpy array first (in case it is a python
+    native type), then return it if it is of dtype 'float64' or
+    'float32'. Try to upcast everything else to float32.
     """
 
-    try:
-        # Try Float32 (this will refuse to downcast)
-        return numpy.asarray(m, numpy.float32)
-    except TypeError:
-        # That failure might have been because the input array was
-        # of a wider data type than float32; try to convert to the
-        # largest floating-point type available:
-        # NOTE TBD: I'm not sure float_ is the best data-type for this...
-        try:
-            return numpy.asarray(m, numpy.float_)
-        except TypeError:
-            # TBD: Need better handling of this error!
-            print "Fatal: array dimensions not equal!"
-            return None
+    m = numpy.asarray(m)
+    if m.dtype in ('float64','float32'):
+        return m
+    else:
+        return numpy.array(m,dtype=numpy.float32)
+
 
 def write_array(f, set,
                 item_sep=' ',
