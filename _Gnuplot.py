@@ -57,6 +57,35 @@ class _GnuplotFile:
         self.flush()
 
 
+class Tic:
+    """An explicit ticmark definition.
+
+    An instance of this class defines a tic mark explicitly, a la
+    gnuplot's 'set xtics (...)' command."""
+
+    def __init__(self, position, label=None, level=None):
+        self.position = position
+        if label is None:
+            if level is not None:
+                label = str(position)
+        elif not isinstance(label, basestring):
+            raise TypeError('label must be a string')
+        self.label = label
+        if level is None:
+            self.level = None
+        else:
+            self.level = int(level)
+
+    def __str__(self):
+        retval = []
+        if self.label is not None:
+            retval.append('"%s"' % (self.label,))
+        retval.append(str(self.position))
+        if self.level is not None:
+            retval.append(str(self.level))
+        return ' '.join(retval)
+
+
 class Gnuplot:
     """Interface to a gnuplot program.
 
@@ -471,6 +500,39 @@ class Gnuplot:
         """Set the plot's title."""
 
         self.set_label('title', s, offset=offset, font=font)
+
+    def set_tics(self, axis, value):
+        """Configure the tics for the given axis.
+
+        axis may be 'x', 'y', 'z', 'x2', or 'y2'.
+
+        value can be a string, in which case it is passed to gnuplot's
+        'set xtics', 'set ytics', etc. command.  Or it can be a list
+        of Tic objects or tuples specifying where each individual
+        tic/label should be placed.  Any list entries that are tuples
+        are passed to the Tic constructor and therefore must be in one
+        of the following forms:
+
+            (pos,)
+            (pos, label)
+            (pos, label, level)
+
+        where pos is the position of the tic mark (as a number), label
+        is a string that will be used to label the tic, and level is 0
+        (for major tics) or 1 (for minor tics).
+
+        """
+
+        if type(value) is types.StringType:
+            tics_string = value
+        else:
+            tics_strings = []
+            for tic in value:
+                if not isinstance(tic, Tic):
+                    tic = Tic(*tic)
+                tics_strings.append(str(tic))
+            tics_string = '(%s)' % (', '.join(tics_strings),)
+	self('set %stics %s' % (axis, tics_string,))
 
     def hardcopy(self, filename=None, terminal='postscript', **keyw):
         """Create a hardcopy of the current plot.
