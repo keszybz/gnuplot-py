@@ -88,12 +88,9 @@ These are notes about the steps to make a new release of Gnuplot.py.
       click "Send Notice".
 
 8. Upload the new web page files (modified in step 1) to sourceforge:
-   $ sftp SFNAME@shell.sf.net
-     cd /home/groups/g/gn/gnuplot-py/htdocs
-     put Gnuplot.html
-     put ANNOUNCE.txt
-     put NEWS.txt
-     quit
+
+   $ rsync *.txt *.html web.sourceforge.net:/home/project-web/gnuplot-py/htdocs
+
    This updates the Gnuplot.html home page, http://gnuplot-py.sourceforge.net/
 
 9. Update the project news page (http://sourceforge.net/projects/gnuplot-py/)
