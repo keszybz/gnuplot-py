@@ -87,6 +87,8 @@ class PlotItem:
             'with', with_, None, 'with %s'),
         'title' : lambda self, title: self.set_string_option(
             'title', title, 'notitle', 'title "%s"'),
+        'fs' : lambda self, fs: self.set_string_option(
+            'fs', fs, None, 'fs %s'),
         }
     _option_list['with_'] = _option_list['with']
 
@@ -94,7 +96,7 @@ class PlotItem:
     _option_sequence = [
         'binary',
         'index', 'every', 'thru', 'using', 'smooth',
-        'axes', 'title', 'with'
+        'axes', 'title', 'with', 'fs'
         ]
 
     def __init__(self, **keyw):
