@@ -19,6 +19,11 @@ import types
 
 from . import gp, PlotItems, termdefs, Errors
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 class _GnuplotFile:
     """A file to which gnuplot commands can be written.
@@ -380,7 +385,7 @@ class Gnuplot:
             sys.stderr.write('Press C-d to end interactive input\n')
         while 1:
             try:
-                line = raw_input('gnuplot>>> ')
+                line = input('gnuplot>>> ')
             except EOFError:
                 break
             self(line)

@@ -28,11 +28,16 @@ except ImportError:
     import funcutils
     Gnuplot.funcutils = funcutils
 
+try:
+    input = raw_input
+except NameError:
+    pass
+
 
 def wait(str=None, prompt='Press return to show results...\n'):
     if str is not None:
         print(str)
-    raw_input(prompt)
+    input(prompt)
 
 
 def main():
