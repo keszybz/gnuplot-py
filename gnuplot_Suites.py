@@ -34,14 +34,15 @@ class gnuplot_Suite:
         _code = 'GPSE'
         _subcode = 'exec'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -56,14 +57,15 @@ class gnuplot_Suite:
         _code = 'GPLT'
         _subcode = 'plot'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -76,14 +78,15 @@ class gnuplot_Suite:
         _code = 'GPLT'
         _subcode = 'splt'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -161,14 +164,15 @@ class odds_and_ends:
         _code = 'misc'
         _subcode = 'slct'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -226,7 +230,7 @@ class Standard_Suite:
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -240,14 +244,15 @@ class Standard_Suite:
         _code = 'core'
         _subcode = 'dsiz'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -261,14 +266,15 @@ class Standard_Suite:
         _code = 'core'
         _subcode = 'getd'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -293,13 +299,14 @@ class Standard_Suite:
         _subcode = 'crel'
 
         aetools.keysubst(_arguments, self._argmap_make)
-        if _no_object != None: raise TypeError, 'No direct arg expected'
+        if _no_object != None:
+            raise TypeError('No direct arg expected')
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -312,14 +319,15 @@ class Standard_Suite:
         _code = 'aevt'
         _subcode = 'odoc'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -332,14 +340,15 @@ class Standard_Suite:
         _code = 'aevt'
         _subcode = 'pdoc'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -366,7 +375,7 @@ class Standard_Suite:
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -391,7 +400,7 @@ class Standard_Suite:
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -552,14 +561,15 @@ class Miscellaneous_Events:
         _code = 'misc'
         _subcode = 'rvrt'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
@@ -572,14 +582,15 @@ class Miscellaneous_Events:
         _code = 'misc'
         _subcode = 'dosc'
 
-        if _arguments: raise TypeError, 'No optional args expected'
+        if _arguments:
+            raise TypeError('No optional args expected')
         _arguments['----'] = _object
 
 
         _reply, _arguments, _attributes = self.send(_code, _subcode,
                 _arguments, _attributes)
         if _arguments.has_key('errn'):
-            raise aetools.Error, aetools.decodeerror(_arguments)
+            raise aetools.Error(aetools.decodeerror(_arguments))
         # XXXX Optionally decode result
         if _arguments.has_key('----'):
             return _arguments['----']
