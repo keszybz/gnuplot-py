@@ -60,7 +60,7 @@ def demo():
     # support enhanced mode, set `enhanced=0' below.
     g.ylabel('x^2') # take advantage of enhanced postscript mode
     g.hardcopy('gp_test.ps', enhanced=1, color=1)
-    print ('\n******** Saved plot to postscript file "gp_test.ps" ********\n')
+    print('\n******** Saved plot to postscript file "gp_test.ps" ********\n')
     raw_input('Please press return to continue...\n')
 
     g.reset()
