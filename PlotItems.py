@@ -21,9 +21,12 @@ import tempfile
 import types
 
 try:
-    from cStringIO import StringIO
+    from io import StringIO
 except ImportError:
-    from StringIO import StringIO
+    try:
+        from cStringIO import StringIO
+    except ImportError:
+        from StringIO import StringIO
 
 import numpy
 
