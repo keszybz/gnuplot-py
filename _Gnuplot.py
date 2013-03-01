@@ -478,7 +478,7 @@ class Gnuplot:
             try:
                 type = self.optiontypes[k]
             except KeyError:
-                raise 'option %s is not supported' % (k,)
+                raise Errors.OptionError('option %s is not supported' % (k,))
             getattr(self, 'set_%s' % type)(k, v)
 
     def xlabel(self, s=None, offset=None, font=None):
