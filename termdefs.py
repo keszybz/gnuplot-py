@@ -138,7 +138,7 @@ class StringArg(ArgOneParam):
 
         if k is None:
             return None
-        elif type(k) is not str:
+        elif not isinstance(k, str):
             raise Errors.OptionError(
                 'Option %s must be a string' % (self.argname,))
         else:
@@ -174,7 +174,7 @@ class BareStringArg(ArgOneParam):
             retval = []
             if self.fixedword is not None:
                 retval.append(self.fixedword)
-            if type(k) in (types.TupleType, types.ListType):
+            if isinstance(k, (tuple, list)):
                 for i in k:
                     retval.append(str(i))
             else:
