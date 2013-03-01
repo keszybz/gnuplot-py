@@ -15,7 +15,12 @@ except ImportError:
     from distutils.core import setup
 
 # Get the version number from the __init__ file:
-from __init__ import __version__
+for line in open('__init__.py'):
+    if line.startswith('__version__'):
+        __version__ = line.partition('=')[2].strip()[1:-1]
+        break
+else:
+    raise ValueError('cannot find __version__')
 
 long_description = """\
 Gnuplot.py is a Python package that allows you to create graphs from

@@ -14,6 +14,8 @@ behavior.
 
 """
 
+from __future__ import absolute_import
+
 import os
 import tempfile
 import types
@@ -25,7 +27,7 @@ except ImportError:
 
 import numpy
 
-import gp, utils, Errors
+from . import gp, utils, Errors
 
 
 class _unset:

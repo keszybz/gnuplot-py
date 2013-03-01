@@ -12,10 +12,12 @@ interface to a running gnuplot process.
 
 """
 
+from __future__ import absolute_import
+
 import sys
 import types
 
-import gp, PlotItems, termdefs, Errors
+from . import gp, PlotItems, termdefs, Errors
 
 
 class _GnuplotFile:

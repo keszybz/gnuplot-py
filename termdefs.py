@@ -27,9 +27,11 @@ keyword arguments and build the 'set terminal' command.
 """
 
 
+from __future__ import absolute_import
+
 import types
 
-import gp, Errors
+from . import gp, Errors
 
 
 class Arg:

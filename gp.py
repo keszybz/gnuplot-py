@@ -20,23 +20,25 @@ gp_*.py modules.
 
 """
 
+from __future__ import absolute_import
+
 import sys, string
 
 # Low-level communication with gnuplot is platform-dependent.  Import
 # the appropriate implementation of GnuplotProcess based on the
 # platform:
 if sys.platform == 'mac':
-    from gp_mac import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_mac import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'win32' or sys.platform == 'cli':
-    from gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_win32 import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'darwin':
-    from gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_macosx import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform[:4] == 'java':
-    from gp_java import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_java import GnuplotOpts, GnuplotProcess, test_persist
 elif sys.platform == 'cygwin':
-    from gp_cygwin import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_cygwin import GnuplotOpts, GnuplotProcess, test_persist
 else:
-    from gp_unix import GnuplotOpts, GnuplotProcess, test_persist
+    from .gp_unix import GnuplotOpts, GnuplotProcess, test_persist
 
 
 def double_quote_string(s):

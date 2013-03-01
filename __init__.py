@@ -155,14 +155,14 @@ Bugs:
 
 """
 
+from __future__ import absolute_import
+
 __version__ = '1.8+'
 
 # Other modules that should be loaded for 'from Gnuplot import *':
 __all__ = ['utils', 'funcutils', ]
 
-from gp import GnuplotOpts, GnuplotProcess, test_persist
-from Errors import Error, OptionError, DataError
-from PlotItems import PlotItem, Func, File, Data, GridData
-from _Gnuplot import Gnuplot, Tic
-
-
+from .gp import GnuplotOpts, GnuplotProcess, test_persist
+from .Errors import Error, OptionError, DataError
+from .PlotItems import PlotItem, Func, File, Data, GridData
+from ._Gnuplot import Gnuplot, Tic
