@@ -183,8 +183,8 @@ def main():
         g.plot(Gnuplot.File(filename1))
         wait('Same thing, inline data')
         g.plot(Gnuplot.Data(d, inline=1))
-        wait('with_="lp 4 4"')
-        g.plot(Gnuplot.Data(d, with_='lp 4 4'))
+        wait('with_="lp lt 4 pt 4"')
+        g.plot(Gnuplot.Data(d, with_='lp lt 4 pt 4'))
         wait('cols=0')
         g.plot(Gnuplot.Data(d, cols=0))
         wait('cols=(0,1), cols=(0,2)')
@@ -219,13 +219,13 @@ def main():
         g.plot(Gnuplot.File(filename1))
         wait('Same thing, inline data')
         g.plot(Gnuplot.funcutils.compute_Data(x, math.cos, inline=1))
-        wait('with_="lp 4 4"')
-        g.plot(Gnuplot.funcutils.compute_Data(x, math.cos, with_='lp 4 4'))
+        wait('with_="lp lt 4 pt 4"')
+        g.plot(Gnuplot.funcutils.compute_Data(x, math.cos, with_='lp lt 4 pt 4'))
 
         print('############### test hardcopy ###############################')
         print('******** Generating postscript file "gp_test.ps" ********')
         wait()
-        g.plot(Gnuplot.Func('cos(0.5*x*x)', with_='linespoints 2 2',
+        g.plot(Gnuplot.Func('cos(0.5*x*x)', with_='linespoints lt 2 pt 2',
                        title='cos(0.5*x^2)'))
         g.hardcopy('gp_test.ps')
 
@@ -265,7 +265,7 @@ def main():
 
         print('******** Generating svg file "gp_test.svg" ********')
         wait()
-        g.plot(Gnuplot.Func('cos(0.5*x*x)', with_='linespoints 2 2',
+        g.plot(Gnuplot.Func('cos(0.5*x*x)', with_='linespoints lt 2 pt 2',
                        title='cos(0.5*x^2)'))
         g.hardcopy('gp_test.svg', terminal='svg')
 
