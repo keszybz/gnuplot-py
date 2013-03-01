@@ -12,7 +12,8 @@ interface to a running gnuplot process.
 
 """
 
-import sys, string, types
+import sys
+import types
 
 import gp, PlotItems, termdefs, Errors
 
@@ -252,7 +253,7 @@ class Gnuplot:
         plotcmds = []
         for item in self.itemlist:
             plotcmds.append(item.command())
-        self(self.plotcmd + ' ' + string.join(plotcmds, ', '))
+        self(self.plotcmd + ' ' + ', '.join(plotcmds))
         for item in self.itemlist:
             # Uses self.gnuplot.write():
             item.pipein(self.gnuplot)
@@ -436,7 +437,7 @@ class Gnuplot:
             if font is not None:
                 cmd.append('"%s"' % (font,))
 
-        self(string.join(cmd))
+        self(' '.join(cmd))
 
     def set_boolean(self, option, value):
         """Set an on/off option.  It is assumed that the way to turn
@@ -632,16 +633,12 @@ class Gnuplot:
         if keyw:
             # Not all options were consumed.
             raise Errors.OptionError(
-                'The following options are unrecognized: %s'
-                % (string.join(keyw.keys(), ', '),)
-                )
+                'The following options are unrecognized: ' + ', '.join(keyw))
 
         self.set_string('output', filename)
-        self(string.join(setterm))
+        self(' '.join(setterm))
         # replot the current figure (to the printer):
         self.refresh()
         # reset the terminal to its `default' setting:
         self('set terminal %s' % gp.GnuplotOpts.default_term)
         self.set_string('output')
-
-

@@ -14,7 +14,9 @@ behavior.
 
 """
 
-import os, string, tempfile, types
+import os
+import tempfile
+import types
 
 try:
     from cStringIO import StringIO
@@ -179,7 +181,7 @@ class PlotItem:
             (val,str) = self._options.get(opt, (None,None))
             if str is not None:
                 cmd.append(str)
-        return string.join(cmd)
+        return ' '.join(cmd)
 
     def command(self):
         """Build the plot command to be sent to gnuplot.
@@ -190,10 +192,8 @@ class PlotItem:
 
         """
 
-        return string.join([
-            self.get_base_command_string(),
-            self.get_command_option_string(),
-            ])
+        return (self.get_base_command_string() + ' '
+                + self.get_command_option_string())
 
     def pipein(self, f):
         """Pipe necessary inline data to gnuplot.
@@ -320,10 +320,8 @@ class _FileItem(PlotItem):
                     subopts.append('')
                 else:
                     subopts.append(str(subopt))
-            self._options[name] = (
-                value,
-                '%s %s' % (name, string.join(subopts, ':'),),
-                )
+            self._options[name] = (value,
+                                   name + ' ' + ':'.join(subopts))
         else:
             raise Errors.OptionError('%s=%s' % (name, value,))
 
@@ -750,5 +748,3 @@ def GridData(
             return _FIFOFileItem(content, **keyw)
         else:
             return _NewFileItem(content, **keyw)
-
-
