@@ -1,5 +1,19 @@
 Gnuplot.py -- A pipe-based interface to the gnuplot plotting program.
 
+This is a git-svn clone of the sourceforge.net repository. On top
+are some commmits to fix Python 3 compatibility, including commits
+from Alexander Oblovatniy (https://github.com/oblalex/gnuplot.py-py3k).
+
+The clone was made a-new, to include tags and proper author names.
+The approach to Py3-ization was also different: compatibility with
+Python 2 is retained.
+
+I intend to submit this upstream in not too distant future.
+
+Original README
+---------------
+
+
 The Gnuplot.py home page is
 
     http://gnuplot-py.sourceforge.net
