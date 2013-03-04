@@ -372,11 +372,6 @@ terminal_opts['postscript'] = [
         ),
     KeywordOrBooleanArg(
         options=['enhanced', 'noenhanced'],
-        # This default should probably be computed from the *current*
-        # value of GnuplotOpts, not at import time. ###
-        default=(gp.GnuplotOpts.prefer_enhanced_postscript
-                 and 'enhanced'
-                 or 'noenhanced'),
         ),
     KeywordOrBooleanArg(options=['color', 'monochrome']),
     KeywordOrBooleanArg(options=['solid', 'dashed']),
